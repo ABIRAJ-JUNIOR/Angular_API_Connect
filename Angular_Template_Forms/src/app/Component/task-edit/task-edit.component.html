@@ -1,0 +1,32 @@
+
+<div class="d-flex flex-column align-items-center col-12">
+  <div class="mt-2">
+    <h1>Update Task</h1>
+  </div>
+    <form class="col-6 mt-4 shadow p-3 mb-5 bg-body-tertiary rounded p-4 rounded-2 text-dark" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="title" formControlName="title"  required>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" name="description" formControlName="description" required>
+        </div>
+        <div class="mb-3">
+          <label for="dueDate" class="form-label">Due Date</label>
+          <input type="text" placeholder="DatePicker" class="form-control" id="dueDate" aria-describedby="dueDateHelp" formControlName="dueDate"  required bsDatepicker >
+        </div>
+        <div class="mb-3">
+          
+        </div>
+        <div class="mb-3">
+          <label for="priority" class="form-label">Priority</label>
+          <select class="form-select" aria-label="Default select example" formControlName="priority">
+            <option value="Hard">Hard</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+          </select>   
+        </div>
+        <button type="submit" class="btn btn-dark" [disabled]="updateForm.invalid">Update</button>
+    </form>
+</div>

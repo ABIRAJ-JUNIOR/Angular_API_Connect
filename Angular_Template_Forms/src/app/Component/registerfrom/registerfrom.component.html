@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center col-12">
+    <form class="col-6 mt-4 bg-primary p-4 rounded-2 text-light" #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" [(ngModel)]="user.fullName" required>
+        </div>
+        <label for="exampleInputPassword1" class="form-label">Gender</label>
+        <div class="mb-3">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="Male" [(ngModel)]="user.gender">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="Female" [(ngModel)]="user.gender">
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="more" value="More" [(ngModel)]="user.gender">
+            <label class="form-check-label" for="more">More</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <select name="country" id="country" class="form-control" name="country" [(ngModel)]="user.country" required>
+            <option value="" disabled>option</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Canada">Canada</option>
+            <option value="India">India</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+</div>

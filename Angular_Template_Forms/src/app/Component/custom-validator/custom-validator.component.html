@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center col-12">
+    <form class="col-6 mt-4 bg-primary p-4 rounded-2 text-light" #loginform="ngForm" >
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="username" class="form-control" id="username"  name="username"  formControlName="username" required email>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password"   name="passw" id="password" required >
+        </div>
+        <button type="submit" [disabled]="loginform.invalid" class="btn btn-secondary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-center align-items-center col-12">
+  <div class="col-8  mt-5 card shadow p-3 mb-5 bg-body-tertiary rounded">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="SearchText" >
+      </div>
+      <div>
+        <button class="btn btn-dark" (click)="GoToAddTask()"><i class="bi bi-plus-lg"></i>Add Task</button>
+      </div>
+    </div>
+
+    <table class="table text-center border border-3 ">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>   
+          <th>Priority</th>   
+          <th>Action</th>   
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Task of Tasks | searchTasks:SearchText">
+          <th>{{Task.id}}</th>
+          <td>{{Task.title}}</td>
+          <td>{{Task.description}}</td>
+          <td>{{Task.dueDate | date:"dd-MMM-yyyy"}}</td>
+          <td [ngClass]="{'colour-for-hard': Task.priority === 'Hard' , 'colour-for-low' : Task.priority == 'Low' , 'colour-for-medium' : Task.priority == 'Medium'}">{{Task.priority}}</td>
+          <td>
+            <button class="btn btn-success me-2"><i class="bi bi-pencil-square" (click)="GoToEdit(Task.id)"></i></button>
+            <button class="btn btn-danger"><i class="bi bi-trash" (click)="DeleteTask(Task.id)"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>

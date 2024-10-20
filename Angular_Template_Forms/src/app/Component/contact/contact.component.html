@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center col-12">
+    <form class="col-6 mt-4 bg-primary p-4 rounded-2 text-light" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="name" class="form-control" id="name" [(ngModel)]="user.name" name="name" #name="ngModel" aria-describedby="nameHelp" required>
+            <div id="name" class="form-text" *ngIf="email.invalid && name.touched">
+                <div *ngIf="name?.errors?.required">
+                    Please enter your name
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" #email="ngModel" aria-describedby="emailHelp" required email>
+            <div id="emailHelp" class="form-text" *ngIf="email.invalid && email.touched">
+                <div *ngIf="email?.errors?.required">
+                    Email Address Required
+                </div>
+                <div *ngIf="email?.errors?.email">
+                    Invalid Email
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <input type="message" class="form-control" [(ngModel)]="user.message" name="message" id="message" required>
+        </div>
+        <div class="d-flex justify-content-center col-12">
+            <button type="submit"  [disabled]="contactForm.invalid" class="btn btn-secondary col-6 m-2">Submit</button>
+            <button type="reset"  class="btn btn-secondary col-6 m-2">Reset Form</button>
+        </div>
+    </form>
+</div>

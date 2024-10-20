@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center col-12">
+    <form class="col-6 mt-4 bg-primary p-4 rounded-2 text-light" #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="user.emailAddress" name="email" #email="ngModel" aria-describedby="emailHelp" required email>
+            <div id="emailHelp" class="form-text" *ngIf="email.invalid && email.touched">
+                <div *ngIf="email?.errors?.required">
+                    Email Address Required
+                </div>
+                <div *ngIf="email?.errors?.email">
+                    Invalid Email
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password" required minlength="6">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" [disabled]="loginform.invalid" class="btn btn-secondary">Submit</button>
+    </form>
+</div>
