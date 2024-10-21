@@ -1,0 +1,40 @@
+<app-home></app-home>
+<div class="d-flex justify-content-center align-items-center col-12">
+    <div class="col-8  mt-5 card shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="SearchText" >
+        </div>
+        <div>
+          <button class="btn btn-dark" (click)="GoToAddUser()"><i class="bi bi-plus-lg"></i>Add User</button>
+        </div>
+      </div>
+  
+      <table class="table text-center border border-3 ">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>   
+            <th>Address</th>   
+            <th>Action</th>   
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let User of Users | searchUsers:SearchText">
+            <th>{{User.id}}</th>
+            <td>{{User.name}}</td>
+            <td>{{User.email}}</td>
+            <td>{{User.gender}}</td>
+            <td>{{User.address}}</td>
+            <td>
+              <button class="btn btn-success me-2" (click)="GoToEdit(User.id)"><i class="bi bi-pencil-square" ></i></button>
+              <button class="btn btn-danger" (click)="DeleteUser(User.id)"><i class="bi bi-trash" ></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>

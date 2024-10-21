@@ -8,24 +8,25 @@ export class TaskService {
 
   constructor(private http:HttpClient) { }
 
+  taskurl:string = 'http://localhost:5185/api/TaskItems'
   getTask(){
-    return this.http.get<Task[]>('http://localhost:5185/api/TaskItems');
+    return this.http.get<Task[]>(this.taskurl);
   }
 
   getTaskById(id:number){
-    return this.http.get<Task>('http://localhost:5185/api/TaskItems/' + id);
+    return this.http.get<Task>(this.taskurl + '/' + id);
   }
 
   addTask(addTask:Task){
-    return this.http.post('http://localhost:5185/api/TaskItems',addTask);
+    return this.http.post(this.taskurl,addTask);
   }
 
   updateTask(id:number, updateTask:Task){
-    return this.http.put('http://localhost:5185/api/TaskItems/'+id,updateTask);
+    return this.http.put(this.taskurl+ '/' +id,updateTask);
   }
 
   deleteTask(id:number){
-    return this.http.delete('http://localhost:5185/api/TaskItems/'+ id);
+    return this.http.delete(this.taskurl +'/'+ id);
   }
 }
 

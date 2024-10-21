@@ -1,3 +1,4 @@
+<app-home></app-home>
 <div class="d-flex justify-content-center align-items-center col-12">
   <div class="col-8  mt-5 card shadow p-3 mb-5 bg-body-tertiary rounded">
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -28,8 +29,8 @@
           <td>{{Task.dueDate | date:"dd-MMM-yyyy"}}</td>
           <td [ngClass]="{'colour-for-hard': Task.priority === 'Hard' , 'colour-for-low' : Task.priority == 'Low' , 'colour-for-medium' : Task.priority == 'Medium'}">{{Task.priority}}</td>
           <td>
-            <button class="btn btn-success me-2"><i class="bi bi-pencil-square" (click)="GoToEdit(Task.id)"></i></button>
-            <button class="btn btn-danger"><i class="bi bi-trash" (click)="DeleteTask(Task.id)"></i></button>
+            <button class="btn btn-success me-2" (click)="GoToEdit(Task.id)"><i class="bi bi-pencil-square" ></i></button>
+            <button class="btn btn-danger" (click)="DeleteTask(Task.id)"><i class="bi bi-trash" ></i></button>
           </td>
         </tr>
       </tbody>
