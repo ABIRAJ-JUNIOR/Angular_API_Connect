@@ -9,29 +9,33 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
   templateUrl: './custom-validator.component.html',
   styleUrl: './custom-validator.component.css'
 })
-export class CustomValidatorComponent  implements OnInit {
+export class CustomValidatorComponent {
   
-  form:any
+  loginform:FormGroup
+  space:boolean = false
 
   user:any = {username: "" , password: ""}
 
+  constructor(private fb:FormBuilder){
+    this.loginform = this.fb.group({
+      username: ['', Validators.required],
+      password:['',Validators.required]
+    })
+  }
   
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      username: new FormControl(this.user.username , [
-        Validators.required
-      ]),
-      password: new FormControl(this.user.password , [
-        Validators.required
-      ])
-    });
+  checkSpace(){
+    if(this.loginform.value.username.trim().slice(this.loginform.value.username) == this.loginform.value.username.slice(this.loginform.value.username) || this.loginform.value.username.trim() == ''){
+      this.space = false
+    }else{
+      this.space = true
+    }
   }
 
   get name() {
-    return this.form.get('username');
+    return this.loginform.get('username');
   }
   get skill() {
-    return this.form.get('password');
+    return this.loginform.get('password');
   }
   
 

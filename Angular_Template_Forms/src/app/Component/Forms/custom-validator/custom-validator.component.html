@@ -1,8 +1,11 @@
 <div class="d-flex justify-content-center col-12">
-    <form class="col-6 mt-4 bg-primary p-4 rounded-2 text-light" #loginform="ngForm" >
+    <form class="col-6 mt-4 bg-primary p-4 rounded-2 text-light" [formGroup]="loginform" >
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="username" class="form-control" id="username"  name="username"  formControlName="username" required email>
+          <input type="username" class="form-control" id="username"  name="username"  formControlName="username" (keyup)="checkSpace()" required >
+          <div  class="form-text text-danger" *ngIf="space">
+            Do not use space in your username
+          </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
