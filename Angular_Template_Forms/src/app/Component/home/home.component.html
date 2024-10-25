@@ -1,6 +1,12 @@
-<nav class="navbar bg-body-tertiary">
-  <form class="container-fluid justify-content-start">
-    <button class="btn btn-sm btn-outline-success me-2" type="button" (click)="GotoUserList()">User</button>
-    <button class="btn btn-sm btn-outline-secondary" type="button" (click)="GotoTaskList()">Task</button>
-  </form>
+<nav class="navbar bg-dark ">
+  <div class="container d-flex justify-content-between">
+    <div>
+      <span class="navbar-brand mb-0 h1 text-white">Task Manager</span>
+    </div>
+    <form>
+      <button class="btn btn-sm btn-success me-2" type="button" (click)="GotoUserList()">User</button>
+      <button class="btn btn-sm btn-secondary" type="button" (click)="GotoTaskList()">Task</button>
+    </form>
+  </div>
 </nav>
+
