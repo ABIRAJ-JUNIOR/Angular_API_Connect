@@ -4,11 +4,12 @@ import { UserService } from '../../../Service/user.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-user-add',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule,RouterLink],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule,RouterLink,HomeComponent],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.css'
 })
@@ -23,7 +24,13 @@ export class UserAddComponent {
       name:['',Validators.required],
       email:[''],
       gender:[''],
-      phone:['',Validators.required]
+      phone:['',Validators.required],
+      address:this.fb.group({
+        addressLine1:[''],
+        addressLine2:[''],
+        city:[''],
+        country:[''],
+      })
     })
 
     this.UID = Number(rout.snapshot.paramMap.get('id'));

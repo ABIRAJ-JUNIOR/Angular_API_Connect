@@ -1,4 +1,3 @@
-<app-home></app-home>
 <div style="margin-left: 18%; height: 100%;">
   <div class="col-8  mt-5 card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 97%; height: 800px;">
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -18,7 +17,7 @@
           <th>Description</th>
           <th>Due Date</th>   
           <th>Priority</th>   
-          <th>UserId</th>   
+          <th>User Name</th>   
           <th>Action</th>   
         </tr>
       </thead>
@@ -29,7 +28,7 @@
           <td>{{Task.description}}</td>
           <td>{{Task.dueDate | date:"dd-MMM-yyyy"}}</td>
           <td [ngClass]="{'colour-for-hard': Task.priority === 'Hard' , 'colour-for-low' : Task.priority == 'Low' , 'colour-for-medium' : Task.priority == 'Medium'}">{{Task.priority}}</td>
-          <td>{{Task.userId}}</td>
+          <td>{{Task.user.name}}</td>
           <td>
             <button class="btn btn-success me-2" (click)="GoToEdit(Task.id)"><i class="bi bi-pencil-square" ></i></button>
             <button class="btn btn-danger" (click)="DeleteTask(Task.id)"><i class="bi bi-trash" ></i></button>

@@ -35,5 +35,13 @@ export interface User{
   name:string,
   email:string,
   gender:string,
-  phone:string
+  phone:string,
+  address?:Address
+}
+
+export interface Address{
+  addressLine1:string,
+  addressLine2:string,
+  city:string,
+  country:string
 }

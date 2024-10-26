@@ -1,4 +1,3 @@
-
 <div class="d-flex flex-column align-items-center  col-12">
     <div class="mt-2">
       <h1>{{isEditMode != true ? "Add User":"Update User"}}</h1>
@@ -6,7 +5,7 @@
     <form class="col-6 mt-4 shadow p-3 mb-5 bg-body-tertiary rounded p-4 rounded-2 text-dark" [formGroup]="UserForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="name" class="form-control" id="name" aria-describedby="nameHelp" name="name" formControlName="name"  required>
+          <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="name" formControlName="name"  required>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
@@ -30,6 +29,25 @@
         <div class="mb-3">
           <label for="phone" class="form-label">Phone</label>
           <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" name="phone" formControlName="phone" required>
+        </div>
+
+        <div formGroupName="address">
+          <div class="mb-3">
+            <label for="addressLine1" class="form-label">Address Line 1</label>
+            <input type="text" class="form-control" id="addressLine1" aria-describedby="addressLine1Help" name="addressLine1" formControlName="addressLine1"  required>
+          </div>
+          <div class="mb-3">
+            <label for="addressLine2" class="form-label">Address Line 2</label>
+            <input type="text" class="form-control" id="addressLine2" aria-describedby="addressLine2Help" name="addressLine2" formControlName="addressLine2" >
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" aria-describedby="cityHelp" name="city" formControlName="city"  required>
+          </div>
+          <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" aria-describedby="countryHelp" name="country" formControlName="country"  required>
+          </div>
         </div>
         
         <div class="d-flex gap-3">

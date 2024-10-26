@@ -6,11 +6,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { User, UserService } from '../../../Service/user.service';
+import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-task-add',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule,BsDatepickerModule,RouterLink],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule,BsDatepickerModule,RouterLink,HomeComponent],
   templateUrl: './task-add.component.html',
   styleUrl: './task-add.component.css'
 })
