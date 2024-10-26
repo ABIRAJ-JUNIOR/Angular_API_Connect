@@ -35,5 +35,6 @@ export interface Task{
   title:string,
   description:string,
   dueDate:string,
-  priority:string
+  priority:string,
+  userId:number
 }

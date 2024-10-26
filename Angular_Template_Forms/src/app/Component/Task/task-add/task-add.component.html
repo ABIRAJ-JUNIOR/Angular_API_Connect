@@ -17,10 +17,18 @@
       </div>
       <div class="mb-3">
         <label for="priority" class="form-label">Priority</label>
-        <select class="form-select" aria-label="Default select example"  formControlName="priority">
+        <select class="form-select" aria-label="Default select example"  formControlName="priority" required>
           <option value="Hard">Hard</option>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="users" class="form-label">Users</label>
+        <select class="form-select" aria-label="Default select example" formControlName="userId" required>
+          <ng-container *ngFor="let user of Users">
+            <option value="{{user.id}}" >{{user.name}}</option>
+          </ng-container>
         </select>
       </div>
       

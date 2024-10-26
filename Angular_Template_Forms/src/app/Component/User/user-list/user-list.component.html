@@ -1,6 +1,6 @@
 <app-home></app-home>
-<div class="d-flex justify-content-center align-items-center col-12">
-    <div class="col-8  mt-5 card shadow p-3 mb-5 bg-body-tertiary rounded">
+<div style="margin-left: 18%; height: 100%;">
+    <div class="col-8  mt-5 card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 97%; height: 800px;">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
           <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="SearchText" >
@@ -17,7 +17,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Gender</th>   
-            <th>Address</th>   
+            <th>Phone</th>   
             <th>Action</th>   
           </tr>
         </thead>
@@ -27,7 +27,7 @@
             <td>{{User.name}}</td>
             <td>{{User.email}}</td>
             <td>{{User.gender}}</td>
-            <td>{{User.address}}</td>
+            <td>{{User.phone}}</td>
             <td>
               <button class="btn btn-success me-2" (click)="GoToEdit(User.id)"><i class="bi bi-pencil-square" ></i></button>
               <button class="btn btn-danger" (click)="DeleteUser(User.id)"><i class="bi bi-trash" ></i></button>
@@ -35,6 +35,5 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    
+    </div>  
   </div>

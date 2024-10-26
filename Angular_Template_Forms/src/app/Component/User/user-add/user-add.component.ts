@@ -23,7 +23,7 @@ export class UserAddComponent {
       name:['',Validators.required],
       email:[''],
       gender:[''],
-      address:['',Validators.required]
+      phone:['',Validators.required]
     })
 
     this.UID = Number(rout.snapshot.paramMap.get('id'));

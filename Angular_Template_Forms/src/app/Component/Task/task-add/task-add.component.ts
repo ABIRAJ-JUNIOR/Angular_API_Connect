@@ -5,6 +5,7 @@ import { TaskService } from '../../../Service/task.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { User, UserService } from '../../../Service/user.service';
 
 @Component({
   selector: 'app-task-add',
@@ -18,14 +19,16 @@ export class TaskAddComponent implements OnInit{
   TaskForm:FormGroup;
   isEditMode:boolean = false
   UID:number;
+  Users:User[] = [];
 
 
-  constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService){
+  constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService){
     this.TaskForm = this.fb.group({
       title:['',Validators.required],
       description:[''],
       dueDate:[''],
-      priority:['',Validators.required]
+      priority:['',Validators.required],
+      userId:['']
     })
 
     this.UID = Number(rout.snapshot.paramMap.get('id'));
@@ -34,6 +37,13 @@ export class TaskAddComponent implements OnInit{
     }else{
       this.isEditMode = false;
     }
+
+    if(!this.isEditMode){
+      this.userservice.getUser().subscribe((data) => {
+        this.Users = data;
+      })
+    }
+
   }
 
   ngOnInit(): void {

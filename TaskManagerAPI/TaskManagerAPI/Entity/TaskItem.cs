@@ -13,5 +13,8 @@ namespace TaskManagerAPI.Entity
         [Required]
         public string Priority { get; set; }
 
+        public int UserId { get; set; }
+        public User? User { get; set; }
+
     }
 }

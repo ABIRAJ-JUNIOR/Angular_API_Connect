@@ -1,12 +1,24 @@
 <nav class="navbar bg-dark ">
-  <div class="container d-flex justify-content-between">
-    <div>
-      <span class="navbar-brand mb-0 h1 text-white">Task Manager</span>
+  <div class="d-flex justify-content-between mx-4" style="width: 100vw;">
+    <div class="d-flex gap-3 align-items-center">
+      <img src="unicomTicLogo.png" alt="Logo" width="50px">
+      <span class="navbar-brand mb-0 h1 text-white fs-3">Unicom TIC</span>
     </div>
     <form>
-      <button class="btn btn-sm btn-success me-2" type="button" (click)="GotoUserList()">User</button>
-      <button class="btn btn-sm btn-secondary" type="button" (click)="GotoTaskList()">Task</button>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </form>
   </div>
 </nav>
+<div class="position-absolute bg-dark text-white" style="width: 300px; height: 93vh;">
+  <div class="text-center mt-4">
+    <h3><i class="bi bi-list"></i> Task Manager</h3>
+  </div>
+  <div class="">
+    <p class="pointer menulink p-3 " (click)="GotoUserList()">User</p>
+    <p class="pointer menulink p-3 " (click)="GotoTaskList()">Task</p>
+  </div>
+</div>
 
