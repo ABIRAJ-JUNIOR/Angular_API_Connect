@@ -21,6 +21,7 @@ export class TaskAddComponent implements OnInit{
   isEditMode:boolean = false
   UID:number;
   Users:User[] = [];
+  
 
 
   constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService){
@@ -40,11 +41,10 @@ export class TaskAddComponent implements OnInit{
       this.isEditMode = false;
     }
 
-    if(!this.isEditMode){
-      this.userservice.getUser().subscribe((data) => {
-        this.Users = data;
-      })
-    }
+
+    this.userservice.getUser().subscribe((data) => {
+      this.Users = data;
+    })
 
   }
 

@@ -38,7 +38,8 @@ export interface User{
   gender:string,
   phone:string,
   address?:Address,
-  tasks?:Task[]
+  tasks?:Task[],
+  totalTasks:number
 }
 
 export interface Address{

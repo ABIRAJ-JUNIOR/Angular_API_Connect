@@ -8,6 +8,7 @@ import { SearchUsersPipe } from '../../../Pipes/search-users.pipe';
 import { HomeComponent } from '../../home/home.component';
 import { Task, TaskService } from '../../../Service/task.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { EMPTY, empty } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -20,18 +21,15 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class UserListComponent {
   Users:User[] = [];
   SearchText:string = "";
-  Tasks:Task[] = [];
   modalRef?: BsModalRef;
   userId:number = 0
 
-  constructor(private userservice:UserService , private router:Router ,private toastr: ToastrService , private taskservice:TaskService, private modalService: BsModalService){
-    this.taskservice.getTask().subscribe((data) => {
-      this.Tasks = data;
-    })
+  constructor(private userservice:UserService , private router:Router ,private toastr: ToastrService, private modalService: BsModalService){
+    this.listUsers();
   }
 
   ngOnInit(): void {
-    this.listUsers();
+    
   }
 
   GoToAddUser(){
@@ -43,23 +41,49 @@ export class UserListComponent {
   }
 
   listUsers(){
-    this.userservice.getUser().subscribe((data) => {
-      this.Users = data;
+    this.userservice.getUser().subscribe({
+      next: (data:User[]) => {
+        this.Users = data;
+      },
+      complete:()=>{
+        this.Users.forEach(u => {
+          let count = 0;
+          u.tasks?.forEach(t => {
+            count++;
+          })
+          u.totalTasks = count;
+         })
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
     })
   }
 
   openModalWithClass(template: TemplateRef<void> , userId:number) {
     this.userId = userId
-    const task = this.Tasks.find(t => t.userId == this.userId);
-    if(task){
-      this.toastr.warning("you can't delete this User." , "" , {
-        positionClass:"toast-top-right",
-        progressBar:true,
-        timeOut:2000
-      })
-    }else{
-      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-    }
+    let USER:User;
+    this.userservice.getUserById(userId).subscribe({
+      next: (data:User) => {
+        USER = data
+      },
+      complete:()=>{
+        if(USER.tasks?.length != 0){
+          this.toastr.warning("you can't delete this User." , "" , {
+            positionClass:"toast-top-right",
+            progressBar:true,
+            timeOut:2000
+          })
+        }else{
+          this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+        }
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
+    })
+
+    
   }
  
   confirm(): void {
@@ -70,7 +94,8 @@ export class UserListComponent {
         timeOut:2000
       })
       this.listUsers();
-    })
+    }),
+    
 
     this.modalRef?.hide();  
   }

@@ -49,15 +49,15 @@
               <div class="" formGroupName="{{i}}">
                 <div class="mb-3">
                   <input type="checkbox" class="form-check-input" id="isDone" formControlName="isDone">
-                  <input type="text" class="form-control" id="name" formControlName="name">
+                  <input type="text" class="form-control" id="name" autocomplete="off" formControlName="name">
                 </div>
               </div>
               <div class="">
-                <button class="btn btn-danger" (click)="removeCheckList(i)">Remove</button>
+                <button type="button" class="btn btn-danger" (click)="removeCheckList(i)">Remove</button>
               </div> 
           </div>
           <div>
-            <button class="btn btn-success" (click)="addCheckList()">Add</button>
+            <button type="button"  class="btn btn-success" (click)="addCheckList()">Add</button>
           </div>
         </div>
       </div>

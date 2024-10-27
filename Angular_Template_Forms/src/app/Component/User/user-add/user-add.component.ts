@@ -22,8 +22,6 @@ export class UserAddComponent {
   public Tasks?:Task[] = [] ;
 
 
-
-
   constructor(private fb:FormBuilder , private userService:UserService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private taskservice:TaskService){
     this.userFormInit();
     this.UID = Number(rout.snapshot.paramMap.get('id'));
@@ -48,20 +46,6 @@ export class UserAddComponent {
       })
     })
   }
-
-  // public _getAllTask(){
-  //   this.taskservice.getTask().subscribe({
-  //    next:(res:any) => {
-  //     this.Tasks = res;
-  //    },
-  //    complete:()=>{
-  //   //  this.UserTask = this.Tasks.filter(t => t.userId == this.UID);
-  //    },
-  //    error:(err:any)=>{
-
-  //    }
-  //   })
-  // }
 
   public _createUser(){
     this.userService.addUser(this.UserForm.value).subscribe(data => {

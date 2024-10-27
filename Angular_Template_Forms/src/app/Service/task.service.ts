@@ -38,5 +38,12 @@ export interface Task{
   dueDate:string,
   priority:string,
   userId:number,
-  user:User
+  user:User,
+  checkLists:CheckList
+}
+
+export interface CheckList{
+  id:number,
+  name:string,
+  isDone:boolean
 }
