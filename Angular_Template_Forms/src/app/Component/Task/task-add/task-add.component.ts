@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {  FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../../Service/task.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -29,7 +29,8 @@ export class TaskAddComponent implements OnInit{
       description:[''],
       dueDate:[''],
       priority:['',Validators.required],
-      userId:['']
+      userId:[''],
+      checkLists:this.fb.array([])
     })
 
     this.UID = Number(rout.snapshot.paramMap.get('id'));
@@ -61,6 +62,24 @@ export class TaskAddComponent implements OnInit{
       });
     }
   }
+
+  get myCheckLists():FormArray{
+    return this.TaskForm.get('checkLists') as FormArray
+  }
+
+  addCheckList(){
+    this.myCheckLists.push(
+      this.fb.group({
+        name:[''],
+        isDone:[false]
+      })
+    )
+  }
+
+  removeCheckList(index:number){
+    this.myCheckLists.removeAt(index)
+  }
+
 
   onSubmit(){
     if(this.isEditMode != true){

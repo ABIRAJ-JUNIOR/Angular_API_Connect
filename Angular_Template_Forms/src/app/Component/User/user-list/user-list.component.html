@@ -18,6 +18,7 @@
             <th>Phone</th>   
             <th>Gender</th>   
             <th>Address</th>   
+            <th>Number Of Tasks</th>
             <th>Action</th>   
           </tr>
         </thead>
@@ -29,6 +30,7 @@
             <td>{{User.phone}}</td>
             <td>{{User.gender}}</td>
             <td>{{User.address?.addressLine1}},{{User.address?.addressLine2}},{{User.address?.city}},{{User.address?.country}}</td>
+            <td></td>
             <td>
               <button class="btn btn-success me-2" (click)="GoToEdit(User.id)"><i class="bi bi-pencil-square" ></i></button>
               <button class="btn btn-danger" (click)="openModalWithClass(template,User.id)"><i class="bi bi-trash" ></i></button>
