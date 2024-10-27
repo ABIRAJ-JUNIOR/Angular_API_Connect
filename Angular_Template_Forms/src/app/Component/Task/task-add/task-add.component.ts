@@ -27,8 +27,8 @@ export class TaskAddComponent implements OnInit{
   constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService){
     this.TaskForm = this.fb.group({
       title:['',Validators.required],
-      description:[''],
-      dueDate:[''],
+      description:['',Validators.required],
+      dueDate:['',Validators.required],
       priority:['',Validators.required],
       userId:[''],
       checkLists:this.fb.array([])
@@ -47,6 +47,12 @@ export class TaskAddComponent implements OnInit{
     })
 
   }
+  
+  get title() { return this.TaskForm.get('title'); }
+  get description() { return this.TaskForm.get('description'); }
+  get dueDate() { return this.TaskForm.get('dueDate'); }
+  get priority() { return this.TaskForm.get('priority'); }
+  get userId() { return this.TaskForm.get('userId'); }
 
   ngOnInit(): void {
     if(this.isEditMode){

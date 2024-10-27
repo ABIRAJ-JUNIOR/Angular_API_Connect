@@ -7,6 +7,7 @@ import { UserAddComponent } from './Component/User/user-add/user-add.component';
 
 export const routes: Routes = [
     {path:'' , component:HomeComponent},
+    {path:'home' , component:HomeComponent},
 
     {path:'task-list' , component:TaskListComponent},
     {path:'task-add' , component:TaskAddComponent},

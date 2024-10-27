@@ -7,21 +7,33 @@
       <div class="col">
         <div class="mb-4">
           <label for="title" class="form-label fw-semibold">Title</label>
+          <div *ngIf="title?.touched && title?.invalid" class="text-danger small">
+            <div *ngIf="title?.errors?.['required']">Title is required.</div>
+          </div>
           <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter task title" required>
         </div>
-    
+  
         <div class="mb-4">
           <label for="description" class="form-label fw-semibold">Description</label>
+          <div *ngIf="description?.touched && description?.invalid" class="text-danger small">
+            <div *ngIf="description?.errors?.['required']">Description is required.</div>
+          </div>
           <textarea class="form-control" id="description" formControlName="description" placeholder="Enter task description" rows="3" required></textarea>
         </div>
-    
+  
         <div class="mb-4">
           <label for="dueDate" class="form-label fw-semibold">Due Date</label>
+          <div *ngIf="dueDate?.touched && dueDate?.invalid" class="text-danger small">
+            <div *ngIf="dueDate?.errors?.['required']">Due Date is required.</div>
+          </div>
           <input type="text" class="form-control" id="dueDate" formControlName="dueDate" autocomplete="off" placeholder="Select due date" bsDatepicker required>
         </div>
-    
+  
         <div class="mb-4">
           <label for="priority" class="form-label fw-semibold">Priority</label>
+          <div *ngIf="priority?.touched && priority?.invalid" class="text-danger small">
+            <div *ngIf="priority?.errors?.['required']">Priority is required.</div>
+          </div>
           <select class="form-select" id="priority" formControlName="priority" required>
             <option value="" disabled>Select priority level</option>
             <option value="Hard">Hard</option>
@@ -29,9 +41,12 @@
             <option value="Low">Low</option>
           </select>
         </div>
-    
+  
         <div class="mb-4">
           <label for="users" class="form-label fw-semibold">Assigned User</label>
+          <div *ngIf="userId?.touched && userId?.invalid" class="text-danger small">
+            <div *ngIf="userId?.errors?.['required']">Assigned User is required.</div>
+          </div>
           <select class="form-select" id="users" formControlName="userId" required>
             <option value="" disabled>Select a user</option>
             <ng-container *ngFor="let user of Users">
@@ -40,32 +55,34 @@
           </select>
         </div>
       </div>
+      
       <div class="col">
         <div>
           <h4>Add Check List</h4>
         </div>
         <div formArrayName="checkLists">
           <div class="d-flex align-items-center gap-4" *ngFor="let checkList of myCheckLists.controls; let i = index">
-              <div class="" formGroupName="{{i}}">
-                <div class="mb-3">
-                  <input type="checkbox" class="form-check-input" id="isDone" formControlName="isDone">
-                  <input type="text" class="form-control" id="name" autocomplete="off" formControlName="name">
-                </div>
+            <div formGroupName="{{i}}">
+              <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="isDone" formControlName="isDone">
+                <input type="text" class="form-control" id="name" autocomplete="off" formControlName="name">
               </div>
-              <div class="">
-                <button type="button" class="btn btn-danger" (click)="removeCheckList(i)">Remove</button>
-              </div> 
+            </div>
+            <div>
+              <button type="button" class="btn btn-danger" (click)="removeCheckList(i)">Remove</button>
+            </div>
           </div>
           <div>
-            <button type="button"  class="btn btn-success" (click)="addCheckList()">Add</button>
+            <button type="button" class="btn btn-success" (click)="addCheckList()">Add</button>
           </div>
         </div>
       </div>
     </div>
-
+  
     <div class="d-flex gap-3 mt-4">
       <button type="submit" class="btn btn-primary col-6" [disabled]="TaskForm.invalid">Submit</button>
       <button type="button" class="btn btn-outline-secondary col-6" [routerLink]="['/task-list']">Cancel</button>
     </div>
   </form>
+  
 </div>
