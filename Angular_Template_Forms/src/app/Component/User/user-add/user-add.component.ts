@@ -17,14 +17,15 @@ export class UserAddComponent {
   UserForm:FormGroup;
   isEditMode:boolean = false
   UID:number;
+  AddressId?:number;
 
 
   constructor(private fb:FormBuilder , private userService:UserService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService){
     this.UserForm = this.fb.group({
       name:['',Validators.required],
-      email:[''],
+      email:['',[Validators.required,Validators.email]],
       gender:[''],
-      phone:['',Validators.required],
+      phone:['',[Validators.required,Validators.minLength(5)]],
       address:this.fb.group({
         addressLine1:[''],
         addressLine2:[''],
@@ -45,6 +46,8 @@ export class UserAddComponent {
     if(this.isEditMode){
       this.userService.getUserById(this.UID).subscribe((data) => {
         this.UserForm.patchValue(data);
+        console.log(data)
+        this.AddressId = data.address?.userId
       }, error => {
         this.toastr.warning("User : " + error.error.title , "" , {
           positionClass:"toast-top-right",
@@ -56,6 +59,7 @@ export class UserAddComponent {
   }
 
   onSubmit(){
+    
     if(this.isEditMode != true){
       this.userService.addUser(this.UserForm.value).subscribe(data => {
         this.toastr.success("User Added Successfully.." , "" , {
@@ -68,6 +72,8 @@ export class UserAddComponent {
     }else{
       let User = this.UserForm.value;
       User.id = this.UID;
+      User.address.id = this.AddressId
+      User.address.userId = this.UID
       this.userService.updateUser(this.UID,User).subscribe((data) => {
         this.toastr.success("User Update Successfully.." , "" , {
           positionClass:"toast-top-right",

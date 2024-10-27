@@ -31,11 +31,18 @@
           <td>{{Task.user.name}}</td>
           <td>
             <button class="btn btn-success me-2" (click)="GoToEdit(Task.id)"><i class="bi bi-pencil-square" ></i></button>
-            <button class="btn btn-danger" (click)="DeleteTask(Task.id)"><i class="bi bi-trash" ></i></button>
+            <button class="btn btn-danger"  (click)="openModalWithClass(template,Task.id)"><i class="bi bi-trash" ></i></button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  
 </div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to Delete?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>

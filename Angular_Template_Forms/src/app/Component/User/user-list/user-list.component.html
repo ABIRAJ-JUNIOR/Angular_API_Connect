@@ -15,8 +15,9 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Gender</th>   
             <th>Phone</th>   
+            <th>Gender</th>   
+            <th>Address</th>   
             <th>Action</th>   
           </tr>
         </thead>
@@ -25,14 +26,25 @@
             <th>{{User.id}}</th>
             <td>{{User.name}}</td>
             <td>{{User.email}}</td>
-            <td>{{User.gender}}</td>
             <td>{{User.phone}}</td>
+            <td>{{User.gender}}</td>
+            <td>{{User.address?.addressLine1}},{{User.address?.addressLine2}},{{User.address?.city}},{{User.address?.country}}</td>
             <td>
               <button class="btn btn-success me-2" (click)="GoToEdit(User.id)"><i class="bi bi-pencil-square" ></i></button>
-              <button class="btn btn-danger" (click)="DeleteUser(User.id)"><i class="bi bi-trash" ></i></button>
+              <button class="btn btn-danger" (click)="openModalWithClass(template,User.id)"><i class="bi bi-trash" ></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>  
   </div>
+
+
+
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to Delete?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
