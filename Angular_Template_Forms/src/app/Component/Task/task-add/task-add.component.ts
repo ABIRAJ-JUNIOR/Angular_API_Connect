@@ -17,14 +17,23 @@ import { HomeComponent } from '../../home/home.component';
 })
 export class TaskAddComponent implements OnInit{
 
-  TaskForm:FormGroup;
-  isEditMode:boolean = false
-  UID:number;
-  Users:User[] = [];
+  public TaskForm!:FormGroup;
+  public TID:number;
+  public Users:User[] = [];
   
 
 
   constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService){
+    this.taskFormInit();
+    this.TID = Number(rout.snapshot.paramMap.get('id'));
+
+    this.userservice.getUser().subscribe((data) => {
+      this.Users = data;
+    })
+
+  }
+
+  private taskFormInit(){
     this.TaskForm = this.fb.group({
       title:['',Validators.required],
       description:['',Validators.required],
@@ -33,19 +42,6 @@ export class TaskAddComponent implements OnInit{
       userId:[''],
       checkLists:this.fb.array([])
     })
-
-    this.UID = Number(rout.snapshot.paramMap.get('id'));
-    if(this.UID){
-      this.isEditMode = true;
-    }else{
-      this.isEditMode = false;
-    }
-
-
-    this.userservice.getUser().subscribe((data) => {
-      this.Users = data;
-    })
-
   }
   
   get title() { return this.TaskForm.get('title'); }
@@ -55,8 +51,8 @@ export class TaskAddComponent implements OnInit{
   get userId() { return this.TaskForm.get('userId'); }
 
   ngOnInit(): void {
-    if(this.isEditMode){
-      this.taskService.getTaskById(this.UID).subscribe((data) => {
+    if(this.TID){
+      this.taskService.getTaskById(this.TID).subscribe((data) => {
         data.dueDate = new Date(data.dueDate).toLocaleDateString();
         this.TaskForm.patchValue(data);
       }, error => {
@@ -86,30 +82,41 @@ export class TaskAddComponent implements OnInit{
     this.myCheckLists.removeAt(index)
   }
 
+  addTask(){
+    this.taskService.addTask(this.TaskForm.value).subscribe(data => {
+      this.toastr.success("Task Added Successfully.." , "" , {
+        positionClass:"toast-top-right",
+        progressBar:true,
+        timeOut:4000
+      })
+      this.router.navigate(['/task-list'])
+    },error => {
+      this.toastr.warning("Task : " + error.error.title , "" , {
+        positionClass:"toast-top-right",
+        progressBar:true,
+        timeOut:4000
+      })
+    })
+  }
 
-  onSubmit(){
-    if(this.isEditMode != true){
-      this.taskService.addTask(this.TaskForm.value).subscribe(data => {
-        this.toastr.success("Task Added Successfully.." , "" , {
-          positionClass:"toast-top-right",
-          progressBar:true,
-          timeOut:4000
-        })
-        this.router.navigate(['/task-list'])
+  updateTask(){
+    let Task = this.TaskForm.value;
+    Task.id = this.TID;
+    this.taskService.updateTask(this.TID,Task).subscribe((data) => {
+      this.toastr.success("Task Update Successfully.." , "" , {
+        positionClass:"toast-top-right",
+        progressBar:true,
+        timeOut:4000
       })
-    }else{
-      let Task = this.TaskForm.value;
-      Task.id = this.UID;
-      this.taskService.updateTask(this.UID,Task).subscribe((data) => {
-        this.toastr.success("Task Update Successfully.." , "" , {
-          positionClass:"toast-top-right",
-          progressBar:true,
-          timeOut:4000
-        })
-        this.router.navigate(['/task-list']);
+      this.router.navigate(['/task-list']);
+    },error => {
+      this.toastr.warning("Task : " + error.error.title , "" , {
+        positionClass:"toast-top-right",
+        progressBar:true,
+        timeOut:4000
       })
-    }
-    
+    })
+
   }
 
 }

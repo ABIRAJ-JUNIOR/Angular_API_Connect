@@ -1,8 +1,8 @@
 <div class="d-flex flex-column align-items-center col-12">
   <div class="mt-4 mb-3 text-center">
-    <h1 class="fw-bold">{{ isEditMode ? "Update Task" : "Add Task" }}</h1>
+    <h1 class="fw-bold">{{ TID ? "Update Task" : "Add Task" }}</h1>
   </div>
-  <form class="col-8 shadow p-5 bg-body-tertiary rounded-3" [formGroup]="TaskForm" (ngSubmit)="onSubmit()">
+  <form class="col-8 shadow p-5 bg-body-tertiary rounded-3" [formGroup]="TaskForm" (ngSubmit)="TID ? updateTask() : addTask()">
     <div class="row">
       <div class="col">
         <div class="mb-4">
