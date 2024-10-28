@@ -2,76 +2,95 @@
     <div class="mt-4 mb-3 text-center">
       <h1 class="fw-bold">{{UID ? "Update User" : "Add User"}}</h1>
     </div>
+
     <form class="col-8 mt-3 shadow p-4 bg-body-tertiary rounded-3" [formGroup]="UserForm" (ngSubmit)=" UID ? _updateUser() : _createUser()">
-        <div class="row gx-4">
-          <div class="col-md-6">
-            <div class="mb-4">
-              <label for="name" class="form-label fw-semibold">Name</label>
-              <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter full name" required>
+      <div class="row gx-4">
+        <div class="col-md-6">
+          <div class="mb-4">
+            <label for="name" class="form-label fw-semibold">Name</label>
+            <div *ngIf="UserForm.get('name')?.touched && UserForm.get('name')?.invalid" class="text-danger small">
+              <div *ngIf="UserForm.get('name')?.errors?.['required']">Name is required.</div>
             </div>
-            <div class="mb-4">
-              <label for="email" class="form-label fw-semibold">Email</label>
-              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" required>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter full name" required>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="form-label fw-semibold">Email</label>
+            <div *ngIf="UserForm.get('email')?.touched && UserForm.get('email')?.invalid" class="text-danger small">
+              <div *ngIf="UserForm.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="UserForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
             </div>
-            <div class="mb-4">
-              <label for="gender" class="form-label fw-semibold">Gender</label>
-              <div class="d-flex gap-3">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" id="male" value="Male" formControlName="gender">
-                  <label class="form-check-label" for="male">Male</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" id="female" value="Female" formControlName="gender">
-                  <label class="form-check-label" for="female">Female</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" id="more" value="More" formControlName="gender">
-                  <label class="form-check-label" for="more">More</label>
-                </div>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" required>
+          </div>
+          <div class="mb-4">
+            <label for="gender" class="form-label fw-semibold">Gender</label>
+            <div class="d-flex gap-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="male" value="Male" formControlName="gender">
+                <label class="form-check-label" for="male">Male</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="female" value="Female" formControlName="gender">
+                <label class="form-check-label" for="female">Female</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="more" value="More" formControlName="gender">
+                <label class="form-check-label" for="more">More</label>
               </div>
             </div>
-            <div class="mb-4">
-              <label for="phone" class="form-label fw-semibold">Phone</label>
-              <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Enter phone number" required>
-            </div>
           </div>
-          
-          <div class="col-md-6" formGroupName="address">
-            <div class="mb-4">
-              <label for="addressLine1" class="form-label fw-semibold">Address Line 1</label>
-              <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1" placeholder="Street, PO Box" required>
+          <div class="mb-4">
+            <label for="phone" class="form-label fw-semibold">Phone</label>
+            <div *ngIf="UserForm.get('phone')?.touched && UserForm.get('phone')?.invalid" class="text-danger small">
+              <div *ngIf="UserForm.get('phone')?.errors?.['required']">Phone number is required.</div>
             </div>
-            <div class="mb-4">
-              <label for="addressLine2" class="form-label fw-semibold">Address Line 2</label>
-              <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2" placeholder="Apartment, Suite, Unit">
-            </div>
-            <div class="mb-4">
-              <label for="city" class="form-label fw-semibold">City</label>
-              <input type="text" class="form-control" id="city" formControlName="city" placeholder="Enter city" required>
-            </div>
-            <div class="mb-4">
-              <label for="country" class="form-label fw-semibold">Country</label>
-              <select class="form-select" id="country" formControlName="country" required>
-                <option value="" disabled>Select Country</option>
-                <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
-              </select>
-            </div>
+            <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Enter phone number" required>
           </div>
-
-          <div class="col-md-6" *ngIf="Tasks?.length != 0">
-            <label for="UserTasks" class="form-label fw-semibold">Assigned Tasks</label>
-            <ul>
-              <ng-container  *ngFor="let task of Tasks">
-                <li>{{task.title}}</li>
-              </ng-container>
-            </ul>
-          </div>
-
         </div>
-        
-        <div class="d-flex gap-3 mt-4">
-          <button type="submit" class="btn btn-primary col-6" [disabled]="UserForm.invalid">Submit</button>
-          <button type="button" class="btn btn-outline-secondary col-6" [routerLink]="['/user-list']">Cancel</button>
+    
+        <div class="col-md-6" formGroupName="address">
+          <div class="mb-4">
+            <label for="addressLine1" class="form-label fw-semibold">Address Line 1</label>
+            <div *ngIf="UserForm.get('address.addressLine1')?.touched && UserForm.get('address.addressLine1')?.invalid" class="text-danger small">
+              <div *ngIf="UserForm.get('address.addressLine1')?.errors?.['required']">Address Line 1 is required.</div>
+            </div>
+            <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1" placeholder="Street, PO Box" required>
+          </div>
+          <div class="mb-4">
+            <label for="addressLine2" class="form-label fw-semibold">Address Line 2</label>
+            <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2" placeholder="Apartment, Suite, Unit">
+          </div>
+          <div class="mb-4">
+            <label for="city" class="form-label fw-semibold">City</label>
+            <div *ngIf="UserForm.get('address.city')?.touched && UserForm.get('address.city')?.invalid" class="text-danger small">
+              <div *ngIf="UserForm.get('address.city')?.errors?.['required']">City is required.</div>
+            </div>
+            <input type="text" class="form-control" id="city" formControlName="city" placeholder="Enter city" required>
+          </div>
+          <div class="mb-4">
+            <label for="country" class="form-label fw-semibold">Country</label>
+            <div *ngIf="UserForm.get('address.country')?.touched && UserForm.get('address.country')?.invalid" class="text-danger small">
+              <div *ngIf="UserForm.get('address.country')?.errors?.['required']">Country is required.</div>
+            </div>
+            <select class="form-select" id="country" formControlName="country" required>
+              <option value="" disabled>Select Country</option>
+              <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+            </select>
+          </div>
         </div>
-    </form>
+    
+        <div class="col-md-6" *ngIf="Tasks?.length != 0">
+          <label for="UserTasks" class="form-label fw-semibold">Assigned Tasks</label>
+          <ul>
+            <ng-container *ngFor="let task of Tasks">
+              <li>{{task.title}}</li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="d-flex gap-3 mt-4">
+        <button type="submit" class="btn btn-primary col-6" [disabled]="UserForm.invalid">Submit</button>
+        <button type="button" class="btn btn-outline-secondary col-6" [routerLink]="['/user-list']">Cancel</button>
+      </div>
+    </form>    
 </div>

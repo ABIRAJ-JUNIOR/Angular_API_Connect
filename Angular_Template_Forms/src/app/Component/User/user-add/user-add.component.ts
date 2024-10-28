@@ -37,7 +37,7 @@ export class UserAddComponent {
       name:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       gender:[''],
-      phone:['',[Validators.required,Validators.minLength(5)]],
+      phone:['',Validators.required],
       address:this.fb.group({
         addressLine1:[''],
         addressLine2:[''],
