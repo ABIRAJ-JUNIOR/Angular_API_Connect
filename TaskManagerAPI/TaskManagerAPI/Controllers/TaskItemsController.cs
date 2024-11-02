@@ -61,7 +61,6 @@ namespace TaskManagerAPI.Controllers
 
             _context.Entry(taskItem).State = EntityState.Modified;
            
-
             try
             {
                     await _context.SaveChangesAsync();
