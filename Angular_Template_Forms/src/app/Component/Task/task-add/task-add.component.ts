@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {  FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TaskService } from '../../../Service/task.service';
+import { CheckList, TaskService } from '../../../Service/task.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -55,6 +55,20 @@ export class TaskAddComponent implements OnInit{
       this.taskService.getTaskById(this.TID).subscribe((data) => {
         data.dueDate = new Date(data.dueDate).toLocaleDateString();
         this.TaskForm.patchValue(data);
+
+        this.myCheckLists.clear();
+        data.checkLists.forEach((c:any) => {
+        
+          const group =  this.fb.group({
+          id:[''],
+          name:[''],
+          taskId:[data.id],
+          isDone:[false]
+        });
+        group.patchValue(c);
+
+        this.myCheckLists.controls.push(group);
+      });
       }, error => {
         this.toastr.warning("Task : " + error.error.title , "" , {
           positionClass:"toast-top-right",
@@ -101,6 +115,7 @@ export class TaskAddComponent implements OnInit{
 
   updateTask(){
     let Task = this.TaskForm.value;
+    Task.checkLists = this.myCheckLists.getRawValue();
     Task.id = this.TID;
     this.taskService.updateTask(this.TID,Task).subscribe((data) => {
       this.toastr.success("Task Update Successfully.." , "" , {

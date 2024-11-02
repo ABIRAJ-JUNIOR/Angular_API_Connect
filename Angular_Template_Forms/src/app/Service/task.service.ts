@@ -39,7 +39,7 @@ export interface Task{
   priority:string,
   userId:number,
   user:User,
-  checkLists:CheckList
+  checkLists:CheckList[]
 }
 
 export interface CheckList{
