@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using TaskManagerAPI.DTO.RequestDTO;
 using TaskManagerAPI.DTO.ResponseDTO;
@@ -63,18 +64,27 @@ namespace TaskManagerAPI.Services
                 Role = userDetails.Role,
             };
 
-            return GenerateToken();
+            return GenerateToken(userDetails);
         }
 
 
-        public TokenModel GenerateToken()
+        public TokenModel GenerateToken(UserSignup user)
         {
+            var claimList = new List<Claim>();
+            claimList.Add(new Claim("UserId", user.UserId.ToString()));
+            claimList.Add(new Claim("Name", user.FullName));
+            claimList.Add(new Claim("Email", user.Email));
+            claimList.Add(new Claim("Role", user.Role.ToString()));
+
+
+
             var key = _configuration["Jwt:Key"];
             var secKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
             var credintial = new SigningCredentials(secKey , SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
+                claims:claimList,
                 expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: credintial
             );
