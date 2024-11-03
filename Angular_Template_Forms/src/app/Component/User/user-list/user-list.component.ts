@@ -1,14 +1,15 @@
 import { Component, TemplateRef } from '@angular/core';
-import { User, UserService } from '../../../Service/user.service';
+import { UserService } from '../../../Service/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchUsersPipe } from '../../../Pipes/search-users.pipe';
 import { HomeComponent } from '../../home/home.component';
-import { Task, TaskService } from '../../../Service/task.service';
+import { TaskService } from '../../../Service/task.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { EMPTY, empty } from 'rxjs';
+import { User } from '../../../Models/models';
 
 @Component({
   selector: 'app-user-list',
@@ -33,11 +34,11 @@ export class UserListComponent {
   }
 
   GoToAddUser(){
-    this.router.navigate(['/user-add']);
+    this.router.navigate(['/home/user-add']);
   }
   
   GoToEdit(id:number){
-    this.router.navigate(['/user-edit',id]);
+    this.router.navigate(['/home/user-edit',id]);
   }
 
   listUsers(){

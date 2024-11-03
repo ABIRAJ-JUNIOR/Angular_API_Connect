@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\controllers\\taskitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\controllers\\taskitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\data\\taskcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\data\\taskcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\iservice\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\iservice\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\irepository\\iauthenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\irepository\\iauthenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|c:\\users\\ut01102\\desktop\\task_manager\\taskmanagerapi\\taskmanagerapi\\repository\\authenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C66477A3-BBD8-48D6-81D5-B4B14BAEE76F}|TaskManagerAPI\\TaskManagerAPI.csproj|solutionrelative:taskmanagerapi\\repository\\authenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,41 +47,68 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TaskContext.cs",
-              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Data\\TaskContext.cs",
-              "RelativeDocumentMoniker": "TaskManagerAPI\\Data\\TaskContext.cs",
-              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Data\\TaskContext.cs",
-              "RelativeToolTip": "TaskManagerAPI\\Data\\TaskContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "TaskManagerAPI\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "TaskManagerAPI\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwCgAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T04:37:00.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "TaskManagerAPI\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "TaskManagerAPI\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAwwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T04:24:24.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-03T04:36:42.302Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TaskItemsController.cs",
-              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Controllers\\TaskItemsController.cs",
-              "RelativeDocumentMoniker": "TaskManagerAPI\\Controllers\\TaskItemsController.cs",
-              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Controllers\\TaskItemsController.cs",
-              "RelativeToolTip": "TaskManagerAPI\\Controllers\\TaskItemsController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAADgv0IAAAAUAAAA",
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "TaskManagerAPI\\Services\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "TaskManagerAPI\\Services\\AuthenticationService.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAwwFIAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T04:16:00.392Z",
+              "WhenOpened": "2024-11-03T04:36:49.766Z",
+              "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Repository\\AuthenticationRepository.cs",
+              "RelativeDocumentMoniker": "TaskManagerAPI\\Repository\\AuthenticationRepository.cs",
+              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\Repository\\AuthenticationRepository.cs",
+              "RelativeToolTip": "TaskManagerAPI\\Repository\\AuthenticationRepository.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAxwBwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T04:36:53.473Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IAuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\IService\\IAuthenticationService.cs",
+              "RelativeDocumentMoniker": "TaskManagerAPI\\IService\\IAuthenticationService.cs",
+              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\IService\\IAuthenticationService.cs",
+              "RelativeToolTip": "TaskManagerAPI\\IService\\IAuthenticationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T04:36:55.755Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IAuthenticationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\IRepository\\IAuthenticationRepository.cs",
+              "RelativeDocumentMoniker": "TaskManagerAPI\\IRepository\\IAuthenticationRepository.cs",
+              "ToolTip": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\IRepository\\IAuthenticationRepository.cs",
+              "RelativeToolTip": "TaskManagerAPI\\IRepository\\IAuthenticationRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T04:36:58.243Z",
+              "IsPinned": true
             }
           ]
         }

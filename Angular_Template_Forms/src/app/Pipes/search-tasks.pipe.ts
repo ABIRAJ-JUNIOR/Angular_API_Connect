@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Task } from '../Service/task.service';
+import { Task } from '../Models/models';
 
 @Pipe({
   name: 'searchTasks',

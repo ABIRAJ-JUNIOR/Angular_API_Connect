@@ -2,6 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using TaskManagerAPI.Data;
+using TaskManagerAPI.IRepository;
+using TaskManagerAPI.IService;
+using TaskManagerAPI.Repository;
+using TaskManagerAPI.Services;
 
 namespace TaskManagerAPI
 {
@@ -23,7 +27,9 @@ namespace TaskManagerAPI
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<TaskContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
 
-            
+            builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+            builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
 
             builder.Services.AddCors(options =>
             {

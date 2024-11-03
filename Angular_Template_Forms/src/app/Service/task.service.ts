@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from './user.service';
+import { Task } from '../Models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -31,19 +31,3 @@ export class TaskService {
   }
 }
 
-export interface Task{
-  id:number,
-  title:string,
-  description:string,
-  dueDate:string,
-  priority:string,
-  userId:number,
-  user:User,
-  checkLists:CheckList[]
-}
-
-export interface CheckList{
-  id:number,
-  name:string,
-  isDone:boolean
-}

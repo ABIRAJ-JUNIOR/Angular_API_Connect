@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {  FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CheckList, TaskService } from '../../../Service/task.service';
+import { TaskService } from '../../../Service/task.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { User, UserService } from '../../../Service/user.service';
+import { UserService } from '../../../Service/user.service';
 import { HomeComponent } from '../../home/home.component';
+import { User } from '../../../Models/models';
 
 @Component({
   selector: 'app-task-add',
@@ -103,7 +104,7 @@ export class TaskAddComponent implements OnInit{
         progressBar:true,
         timeOut:4000
       })
-      this.router.navigate(['/task-list'])
+      this.router.navigate(['/home/task-list'])
     },error => {
       this.toastr.warning("Task : " + error.error.title , "" , {
         positionClass:"toast-top-right",
@@ -123,7 +124,7 @@ export class TaskAddComponent implements OnInit{
         progressBar:true,
         timeOut:4000
       })
-      this.router.navigate(['/task-list']);
+      this.router.navigate(['/home/task-list']);
     },error => {
       this.toastr.warning("Task : " + error.error.title , "" , {
         positionClass:"toast-top-right",

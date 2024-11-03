@@ -144,6 +144,32 @@ namespace TaskManagerAPI.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("TaskManagerAPI.Entity.UserSignup", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UsersSignups");
+                });
+
             modelBuilder.Entity("TaskManagerAPI.Entity.Address", b =>
                 {
                     b.HasOne("TaskManagerAPI.Entity.User", "User")

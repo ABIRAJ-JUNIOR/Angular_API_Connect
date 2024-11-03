@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Task, TaskService } from '../../../Service/task.service';
+import { TaskService } from '../../../Service/task.service';
 import { CommonModule } from '@angular/common';
 import { Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { SearchTasksPipe } from '../../../Pipes/search-tasks.pipe';
 import { ToastrService } from 'ngx-toastr';
 import { HomeComponent } from '../../home/home.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Task } from '../../../Models/models';
 
 @Component({
   selector: 'app-task-list',
@@ -30,11 +31,11 @@ export class TaskListComponent implements OnInit {
   }
 
   GoToAddTask(){
-    this.router.navigate(['/task-add']);
+    this.router.navigate(['/home/task-add']);
   }
   
   GoToEdit(id:number){
-    this.router.navigate(['/task-edit',id]);
+    this.router.navigate(['/home/task-edit',id]);
   }
 
 

@@ -1296,3 +1296,5 @@ C:\Users\UT01102\Desktop\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\ne
 C:\Users\UT01102\Desktop\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\net8.0\TaskManagerAPI.pdb
 C:\Users\UT01102\Desktop\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\net8.0\TaskManagerAPI.genruntimeconfig.cache
 C:\Users\UT01102\Desktop\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\net8.0\ref\TaskManagerAPI.dll
+C:\Users\UT01102\Desktop\Task_Manager\TaskManagerAPI\TaskManagerAPI\bin\Debug\net8.0\BCrypt.Net.dll
+C:\Users\UT01102\Desktop\Task_Manager\TaskManagerAPI\TaskManagerAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

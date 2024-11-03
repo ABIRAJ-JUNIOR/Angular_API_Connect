@@ -12,8 +12,8 @@ using TaskManagerAPI.Data;
 namespace TaskManagerAPI.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20241026123248_initial3")]
-    partial class initial3
+    [Migration("20241103113038_initial1")]
+    partial class initial1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,31 @@ namespace TaskManagerAPI.Migrations
                         .IsUnique();
 
                     b.ToTable("Address");
+                });
+
+            modelBuilder.Entity("TaskManagerAPI.Entity.CheckList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDone")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("CheckList");
                 });
 
             modelBuilder.Entity("TaskManagerAPI.Entity.TaskItem", b =>
@@ -122,6 +147,32 @@ namespace TaskManagerAPI.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("TaskManagerAPI.Entity.UserSignup", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UsersSignups");
+                });
+
             modelBuilder.Entity("TaskManagerAPI.Entity.Address", b =>
                 {
                     b.HasOne("TaskManagerAPI.Entity.User", "User")
@@ -133,6 +184,17 @@ namespace TaskManagerAPI.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("TaskManagerAPI.Entity.CheckList", b =>
+                {
+                    b.HasOne("TaskManagerAPI.Entity.TaskItem", "Task")
+                        .WithMany("CheckLists")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Task");
+                });
+
             modelBuilder.Entity("TaskManagerAPI.Entity.TaskItem", b =>
                 {
                     b.HasOne("TaskManagerAPI.Entity.User", "User")
@@ -142,6 +204,11 @@ namespace TaskManagerAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TaskManagerAPI.Entity.TaskItem", b =>
+                {
+                    b.Navigation("CheckLists");
                 });
 
             modelBuilder.Entity("TaskManagerAPI.Entity.User", b =>

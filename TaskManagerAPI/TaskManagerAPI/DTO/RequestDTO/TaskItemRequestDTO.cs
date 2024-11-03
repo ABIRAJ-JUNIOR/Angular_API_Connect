@@ -1,4 +1,4 @@
-﻿namespace TaskManagerAPI.DTO
+﻿namespace TaskManagerAPI.DTO.RequestDTO
 {
     public class TaskItemRequestDTO
     {
