@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SignIn, SignUp } from '../Models/models';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,15 @@ export class SignupSigninService {
   }
 
   UserSignIn(UserSignIn:SignIn){
-    return this.http.post(this.UserURL + '/login' , UserSignIn)
+    return this.http.post(this.UserURL + '/login', UserSignIn ,{
+      responseType:'text'
+    });
   }
   isLoggedIn():boolean{
-    if(localStorage.getItem("token")){
-      
+    const token:string = localStorage.getItem("token")!;
+    const decode:any = jwtDecode(token)
+    console.log(decode.Role)
+    if(decode.Role == "Admin"){  
       return true
     }else{
       return false

@@ -31,7 +31,7 @@ export class LoginPageComponent {
   onSubmit() {
     this.signInService.UserSignIn(this.signinForm.value).subscribe({
       next:(response:any) => {
-        localStorage.setItem("token" , JSON.stringify(response))
+        localStorage.setItem("token" , response)
         this.toastr.success("User Login Successfully.." , "" , {
           positionClass:"toast-top-right",
           progressBar:true,

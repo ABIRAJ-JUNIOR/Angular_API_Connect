@@ -20,6 +20,7 @@
     "@angular/router": "^18.2.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "jwt-decode": "^4.0.0",
     "ngx-bootstrap": "^18.1.1",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",

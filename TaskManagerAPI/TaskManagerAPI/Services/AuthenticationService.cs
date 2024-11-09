@@ -53,7 +53,7 @@ namespace TaskManagerAPI.Services
             }
         }
 
-        public async Task<TokenModel> Login(LoginRequestDTO request)
+        public async Task<string> Login(LoginRequestDTO request)
         {
             var userDetails = await _AuthenticationRepository.Login(request);
             var response = new AdminResponseDTO()
@@ -68,7 +68,7 @@ namespace TaskManagerAPI.Services
         }
 
 
-        public TokenModel GenerateToken(Admin user)
+        public string GenerateToken(Admin user)
         {
             var claimList = new List<Claim>();
             claimList.Add(new Claim("UserId", user.Id.ToString()));
@@ -89,8 +89,7 @@ namespace TaskManagerAPI.Services
                 signingCredentials: credintial
             );
 
-            var res = new TokenModel();
-            res.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            var res = new JwtSecurityTokenHandler().WriteToken(token);
             return res;
         }
     }

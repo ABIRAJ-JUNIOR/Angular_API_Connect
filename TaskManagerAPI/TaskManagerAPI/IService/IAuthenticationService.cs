@@ -7,6 +7,6 @@ namespace TaskManagerAPI.IService
     public interface IAuthenticationService
     {
         Task<AdminResponseDTO> AddUser(SignUpRequestDTO request);
-        Task<TokenModel> Login(LoginRequestDTO request);
+        Task<string> Login(LoginRequestDTO request);
     }
 }
