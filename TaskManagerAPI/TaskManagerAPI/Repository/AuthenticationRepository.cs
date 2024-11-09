@@ -17,20 +17,20 @@ namespace TaskManagerAPI.Repository
             _dBContext = dBContext;
         }
 
-        public async Task<UserSignup> AddUser(UserSignup user)
+        public async Task<Admin> AddUser(Admin user)
         {
-            var userDetails = await _dBContext.UsersSignups.AddAsync(user);
+            var userDetails = await _dBContext.Admins.AddAsync(user);
             await _dBContext.SaveChangesAsync();
             return userDetails.Entity;
         }
 
-        public async Task<UserSignup> GetUserByEmail(string email)
+        public async Task<Admin> GetUserByEmail(string email)
         {
-            var user = await _dBContext.UsersSignups.SingleOrDefaultAsync(u => u.Email == email);
+            var user = await _dBContext.Admins.SingleOrDefaultAsync(u => u.Email == email);
             return user!;
         }
 
-        public async Task<UserSignup> Login(LoginRequestDTO request)
+        public async Task<Admin> Login(LoginRequestDTO request)
         {
             var user = await GetUserByEmail(request.Email);
             if (user == null)

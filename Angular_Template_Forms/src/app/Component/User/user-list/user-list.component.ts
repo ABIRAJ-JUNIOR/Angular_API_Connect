@@ -5,16 +5,13 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchUsersPipe } from '../../../Pipes/search-users.pipe';
-import { HomeComponent } from '../../home/home.component';
-import { TaskService } from '../../../Service/task.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { EMPTY, empty } from 'rxjs';
 import { User } from '../../../Models/models';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule,FormsModule,SearchUsersPipe,HomeComponent],
+  imports: [CommonModule,FormsModule,SearchUsersPipe],
   providers :[BsModalService],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
@@ -34,11 +31,11 @@ export class UserListComponent {
   }
 
   GoToAddUser(){
-    this.router.navigate(['/home/user-add']);
+    this.router.navigate(['/admin/user-add']);
   }
   
   GoToEdit(id:number){
-    this.router.navigate(['/home/user-edit',id]);
+    this.router.navigate(['/admin/user-edit',id]);
   }
 
   listUsers(){

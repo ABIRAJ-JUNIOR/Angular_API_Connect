@@ -5,14 +5,13 @@ import { Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SearchTasksPipe } from '../../../Pipes/search-tasks.pipe';
 import { ToastrService } from 'ngx-toastr';
-import { HomeComponent } from '../../home/home.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Task } from '../../../Models/models';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule,FormsModule,SearchTasksPipe,HomeComponent],
+  imports: [CommonModule, FormsModule, SearchTasksPipe],
   providers :[BsModalService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
@@ -31,11 +30,11 @@ export class TaskListComponent implements OnInit {
   }
 
   GoToAddTask(){
-    this.router.navigate(['/home/task-add']);
+    this.router.navigate(['/admin/task-add']);
   }
   
   GoToEdit(id:number){
-    this.router.navigate(['/home/task-edit',id]);
+    this.router.navigate(['/admin/task-edit',id]);
   }
 
 
@@ -66,7 +65,5 @@ export class TaskListComponent implements OnInit {
  
   decline(): void {
     this.modalRef?.hide();
-  }
-
-  
+  } 
 }

@@ -5,8 +5,8 @@ namespace TaskManagerAPI.IRepository
 {
     public interface IAuthenticationRepository
     {
-        Task<UserSignup> AddUser(UserSignup user);
-        Task<UserSignup> GetUserByEmail(string email);
-        Task<UserSignup> Login(LoginRequestDTO request);
+        Task<Admin> AddUser(Admin user);
+        Task<Admin> GetUserByEmail(string email);
+        Task<Admin> Login(LoginRequestDTO request);
     }
 }

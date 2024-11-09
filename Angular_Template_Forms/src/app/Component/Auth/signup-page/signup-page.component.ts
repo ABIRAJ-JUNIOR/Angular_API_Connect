@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SignupSigninService } from '../../Service/signup-signin.service';
-import { SignUp } from '../../Models/models';
-import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
+import { SignupSigninService } from '../../../Service/signup-signin.service';
+import { ToastrService } from 'ngx-toastr';
+import { SignUp } from '../../../Models/models';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-signup-page',
   standalone: true,
   imports: [CommonModule,FormsModule,ReactiveFormsModule,RouterModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  templateUrl: './signup-page.component.html',
+  styleUrl: './signup-page.component.css'
 })
-export class RegisterComponent {
+export class SignupPageComponent {
   signupForm: FormGroup;
   submitted = false;
 
@@ -87,5 +87,4 @@ export class RegisterComponent {
       return true
     }
   }
-
 }

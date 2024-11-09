@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-admin-page',
   standalone: true,
   imports: [RouterOutlet,RouterLink,RouterLinkActive],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './admin-page.component.html',
+  styleUrl: './admin-page.component.css'
 })
-export class HomeComponent {
-  
+export class AdminPageComponent {
   constructor(private router:Router){}
 
   GotoUserList(){
@@ -18,5 +17,10 @@ export class HomeComponent {
 
   GotoTaskList(){
     this.router.navigate(['/task-list']);
+  }
+
+  Lockout(){
+    localStorage.removeItem("token")
+    this.router.navigate(['/login'])
   }
 }

@@ -6,13 +6,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UserService } from '../../../Service/user.service';
-import { HomeComponent } from '../../home/home.component';
 import { User } from '../../../Models/models';
 
 @Component({
   selector: 'app-task-add',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule,BsDatepickerModule,RouterLink,HomeComponent],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule,BsDatepickerModule,RouterLink],
   templateUrl: './task-add.component.html',
   styleUrl: './task-add.component.css'
 })
@@ -24,7 +23,7 @@ export class TaskAddComponent implements OnInit{
   
 
 
-  constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService){
+  constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService ){
     this.taskFormInit();
     this.TID = Number(rout.snapshot.paramMap.get('id'));
 
@@ -104,7 +103,7 @@ export class TaskAddComponent implements OnInit{
         progressBar:true,
         timeOut:4000
       })
-      this.router.navigate(['/home/task-list'])
+      this.router.navigate(['/admin/task-list'])
     },error => {
       this.toastr.warning("Task : " + error.error.title , "" , {
         positionClass:"toast-top-right",
@@ -124,7 +123,7 @@ export class TaskAddComponent implements OnInit{
         progressBar:true,
         timeOut:4000
       })
-      this.router.navigate(['/home/task-list']);
+      this.router.navigate(['/admin/task-list']);
     },error => {
       this.toastr.warning("Task : " + error.error.title , "" , {
         positionClass:"toast-top-right",
@@ -134,5 +133,8 @@ export class TaskAddComponent implements OnInit{
     })
 
   }
+
+
+  
 
 }

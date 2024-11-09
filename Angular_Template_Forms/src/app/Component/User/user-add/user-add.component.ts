@@ -4,14 +4,13 @@ import { UserService } from '../../../Service/user.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from '../../home/home.component';
 import { TaskService } from '../../../Service/task.service';
 import { Task } from '../../../Models/models';
 
 @Component({
   selector: 'app-user-add',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule,RouterLink,HomeComponent],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule,RouterLink],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.css'
 })
@@ -55,7 +54,7 @@ export class UserAddComponent {
         progressBar:true,
         timeOut:4000
       })
-      this.router.navigate(['/home/user-list'])
+      this.router.navigate(['/admin/user-list'])
     })
   }
 
@@ -70,7 +69,7 @@ export class UserAddComponent {
         progressBar:true,
         timeOut:4000
       })
-      this.router.navigate(['/home/user-list']);
+      this.router.navigate(['/admin/user-list']);
     })
   }
 

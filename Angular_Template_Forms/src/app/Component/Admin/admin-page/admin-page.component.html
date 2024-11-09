@@ -8,6 +8,7 @@
       <form class="d-flex align-items-center" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-danger text-white fw-bold ms-3" (click)="Lockout()">Logout</button>
       </form>
     </div>
 </nav>
@@ -24,13 +25,13 @@
         </a>
       </li>
       <li>
-        <a [routerLink]="['/home/task-list']" class="nav-link text-white" routerLinkActive="active">
+        <a [routerLink]="['/admin/task-list']" class="nav-link text-white" routerLinkActive="active">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
           Tasks
         </a>
       </li>
       <li>
-        <a [routerLink]="['/home/user-list']" class="nav-link text-white" routerLinkActive="active">
+        <a [routerLink]="['/admin/user-list']" class="nav-link text-white" routerLinkActive="active">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
           Users
         </a>

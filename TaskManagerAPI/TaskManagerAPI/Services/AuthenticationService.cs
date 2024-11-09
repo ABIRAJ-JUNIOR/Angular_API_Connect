@@ -22,12 +22,12 @@ namespace TaskManagerAPI.Services
             _configuration = configuration;
         }
 
-        public async Task<UserResponseDTO> AddUser(SignUpRequestDTO request)
+        public async Task<AdminResponseDTO> AddUser(SignUpRequestDTO request)
         {
             var user = await _AuthenticationRepository.GetUserByEmail(request.Email);
             if (user == null)
             {
-                var userObj = new UserSignup()
+                var userObj = new Admin()
                 {
                     FullName = request.FullName,
                     Email = request.Email,
@@ -37,9 +37,9 @@ namespace TaskManagerAPI.Services
 
                 var userData = await _AuthenticationRepository.AddUser(userObj);
 
-                var response = new UserResponseDTO()
+                var response = new AdminResponseDTO()
                 {
-                    UserId = userData.UserId,
+                    UserId = userData.Id,
                     FullName = userData.FullName,
                     Email = userData.Email,
                     Role = userData.Role,
@@ -56,9 +56,9 @@ namespace TaskManagerAPI.Services
         public async Task<TokenModel> Login(LoginRequestDTO request)
         {
             var userDetails = await _AuthenticationRepository.Login(request);
-            var response = new UserResponseDTO()
+            var response = new AdminResponseDTO()
             {
-                UserId = userDetails.UserId,
+                UserId = userDetails.Id,
                 FullName = userDetails.FullName,
                 Email = userDetails.Email,
                 Role = userDetails.Role,
@@ -68,10 +68,10 @@ namespace TaskManagerAPI.Services
         }
 
 
-        public TokenModel GenerateToken(UserSignup user)
+        public TokenModel GenerateToken(Admin user)
         {
             var claimList = new List<Claim>();
-            claimList.Add(new Claim("UserId", user.UserId.ToString()));
+            claimList.Add(new Claim("UserId", user.Id.ToString()));
             claimList.Add(new Claim("Name", user.FullName));
             claimList.Add(new Claim("Email", user.Email));
             claimList.Add(new Claim("Role", user.Role.ToString()));

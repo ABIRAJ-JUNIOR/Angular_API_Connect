@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SignupSigninService } from '../../Service/signup-signin.service';
-import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
-import { SignUp } from '../../Models/models';
+import { SignupSigninService } from '../../../Service/signup-signin.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-page',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule,FormsModule,RouterModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './login-page.component.html',
+  styleUrl: './login-page.component.css'
 })
-export class LoginComponent {
+export class LoginPageComponent {
   signinForm: FormGroup;
 
   constructor(
@@ -32,13 +31,14 @@ export class LoginComponent {
   onSubmit() {
     this.signInService.UserSignIn(this.signinForm.value).subscribe({
       next:(response:any) => {
+        localStorage.setItem("token" , JSON.stringify(response))
         this.toastr.success("User Login Successfully.." , "" , {
           positionClass:"toast-top-right",
           progressBar:true,
           timeOut:4000
         })
       },complete:()=>{
-        this.rout.navigate(['/home'])
+        this.rout.navigate(['/admin/user-list'])
       },error:(error:any)=>{
         this.toastr.warning( error.error, "" , {
           positionClass:"toast-top-right",

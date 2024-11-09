@@ -18,4 +18,12 @@ export class SignupSigninService {
   UserSignIn(UserSignIn:SignIn){
     return this.http.post(this.UserURL + '/login' , UserSignIn)
   }
+  isLoggedIn():boolean{
+    if(localStorage.getItem("token")){
+      
+      return true
+    }else{
+      return false
+    }
+  }
 }
