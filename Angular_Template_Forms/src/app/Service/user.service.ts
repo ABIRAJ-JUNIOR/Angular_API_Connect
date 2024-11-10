@@ -11,7 +11,10 @@ export class UserService {
 
   userurl:string = 'http://localhost:5185/api/Users'
   getUser(){
-    return this.http.get<User[]>(this.userurl);
+    const token = localStorage.getItem('token');
+    return this.http.get<User[]>(this.userurl,{
+      headers:{'Authorization' : 'Bearer' + token}
+    });
   }
 
   getUserById(id:number){

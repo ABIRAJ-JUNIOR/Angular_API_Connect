@@ -24,7 +24,6 @@ export class SignupSigninService {
   isLoggedIn():boolean{
     const token:string = localStorage.getItem("token")!;
     const decode:any = jwtDecode(token)
-    console.log(decode.Role)
     if(decode.Role == "Admin"){  
       return true
     }else{

@@ -7903,19 +7903,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abira\\.nuget\\packages\\": {}
+    "C:\\Users\\UT01102\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\abira\\Desktop\\My_Repositories\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
+      "projectUniqueName": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
       "projectName": "TaskManagerAPI",
-      "projectPath": "C:\\Users\\abira\\Desktop\\My_Repositories\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
-      "packagesPath": "C:\\Users\\abira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\abira\\Desktop\\My_Repositories\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\obj\\",
+      "projectPath": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
+      "packagesPath": "C:\\Users\\UT01102\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\UT01102\\Desktop\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\abira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\UT01102\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7997,7 +7997,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
